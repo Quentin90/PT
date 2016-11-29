@@ -1,0 +1,22 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+	<div class="row">
+
+		<table>
+			<caption>Recapitulatifs des user (avec twig)</caption>
+			<thead>
+			<tr><th>id</th><th>nom</th><th>prenom</th><th>ine</th><th>mail</th><th>mdp</th><th>date_n</th><th>filiere</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for donnees in donnees if donnees is not empty %}
+
+				<tr>
+					<td>{{donnees.id_user}}</td><td>{{donnees.nom_user}}</td><td>{{donnees.prenom_user}}</td><td>{{donnees.N_INE}}</td><td>{{donnees.e_mail}}</td><td>{{donnees.Mot_de_passe}}</td><td>{{donnees.date_naissance}}</td><td>{{donnees.filiere}}</td>
+				</tr>
+			{% endfor %}
+			<tbody>
+		</table>
+	</div>
+{% endblock %}
+

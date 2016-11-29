@@ -1,0 +1,54 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+<form method="post" action="{{ path('user.validFormAddUser') }}">
+    <div class="row">
+        <fieldset>
+            <legend>Creer un Compte</legend>
+            <label>Nom :
+                <input name="nom"  type="text"  size="18" value="{{donnees.nom|default('')}}" />
+                {% if erreurs.nom is defined %}
+                    <small class="error">{{erreurs.nom}}</small>
+                {% endif %}
+            </label>
+            <label>Prénom :
+                <input name="prenom"  type="text"  size="18" value="{{donnees.prenom|default('')}}" />
+                {% if erreurs.nom is defined %}
+                    <small class="error">{{erreurs.nom}}</small>
+                {% endif %}
+            </label>
+            <label>INE :
+                <input name="ine"  type="text"  size="18" value="{{donnees.ine|default('')}}" />
+                {% if erreurs.nom is defined %}
+                    <small class="error">{{erreurs.nom}}</small>
+                {% endif %}
+            </label>
+            <label>Email :
+                <input name="mail"  type="text"  size="18" value="{{donnees.mail|default('')}}" />
+                {% if erreurs.nom is defined %}
+                    <small class="error">{{erreurs.nom}}</small>
+                {% endif %}
+            </label>
+            <label>mot de passe :
+                <input name="mdp"  type="text"  size="18" value="{{donnees.mdp|default('')}}" />
+                {% if erreurs.nom is defined %}
+                    <small class="error">{{erreurs.nom}}</small>
+                {% endif %}
+            </label>
+            <label>date de naissance :
+                <input name="date_n"  type="text"  size="18" value="{{donnees.date_n|default('')}}" />
+                {% if erreurs.nom is defined %}
+                    <small class="error">{{erreurs.nom}}</small>
+                {% endif %}
+            </label>
+            <label>filliere :
+                <input name="filliere"  type="text"  size="18" value="{{donnees.filliere|default('')}}" />
+                {% if erreurs.nom is defined %}
+                    <small class="error">{{erreurs.nom}}</small>
+                {% endif %}
+            </label>
+
+            <input type="submit" name="creerProduit" value="créer" />
+        </fieldset>
+    </div>
+</form>
+{% endblock %}
