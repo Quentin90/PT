@@ -16,10 +16,20 @@ CREATE TABLE User(
         mot_de_passe     Varchar (25) ,
         date_naissance   Date ,
         filiere          Varchar (25) ,
-        type_user        Varchar (25) ,
+        id_type_user     Int ,
         id_etablissement Int ,
         id_sexe          Int ,
         PRIMARY KEY (id_user )
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: Type_user   
+#------------------------------------------------------------
+
+CREATE TABLE Type_User(
+        id_type_user int Auto_increment NOT NULL,
+        libelle_type_user Varchar(25) NOT NULL,
+        PRIMARY KEY (id_type_user)
 )ENGINE=InnoDB;
 
 
@@ -176,6 +186,7 @@ CREATE TABLE Enseigne(
 
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Etablissement FOREIGN KEY (id_etablissement) REFERENCES Etablissement(id_etablissement);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_sexe FOREIGN KEY (id_sexe) REFERENCES Sexe(id_sexe);
+ALTER TABLE User ADD CONSTRAINT FK_User_id_type_user FOREIGN KEY (id_type_user) REFERENCES Type_user(id_type_user);
 ALTER TABLE Cours ADD CONSTRAINT FK_Cours_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
 ALTER TABLE Cours ADD CONSTRAINT FK_Cours_id_matiere FOREIGN KEY (id_matiere) REFERENCES Matiere(id_matiere);
 ALTER TABLE Objet ADD CONSTRAINT FK_Objet_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
@@ -188,13 +199,4 @@ ALTER TABLE Participe ADD CONSTRAINT FK_Participe_id_user FOREIGN KEY (id_user) 
 ALTER TABLE Enseigne ADD CONSTRAINT FK_Enseigne_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
 ALTER TABLE Enseigne ADD CONSTRAINT FK_Enseigne_id_matiere FOREIGN KEY (id_matiere) REFERENCES Matiere(id_matiere);
 
-#------------------------------------------------------------
-# Table: Type_user      A Ajouter
-#------------------------------------------------------------
 
-CREATE TABLE Type_User(
-        id_type_user Int NOT NULL,
-        libelle_type_user Varchar(25) NOT NULL,
-        PRIMARY KEY (id_type_user)
-        CONSTRAINT FK_User_Type_User FOREIGN KEY (id_type_user) REFERENCES Type_User(id_type_user);
-)ENGINE=InnoDB;
