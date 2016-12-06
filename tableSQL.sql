@@ -26,7 +26,7 @@ CREATE TABLE User(
 # Table: Type_user   
 #------------------------------------------------------------
 
-CREATE TABLE Type_User(
+CREATE TABLE Type_user(
         id_type_user int Auto_increment NOT NULL,
         libelle_type_user Varchar(25) NOT NULL,
         PRIMARY KEY (id_type_user)
