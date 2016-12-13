@@ -1,0 +1,28 @@
+
+
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area"> 
+      <li class="name"> 
+        <h1> <a href="">TP web<span style="color:#ff0000;"> menu avec twig</span></a></h1>
+      </li> 
+      <li class="toggle-topbar menu-icon">
+        <a href="#"><span>Menu</span></a>
+      </li> 
+    </ul> 
+    <section class="top-bar-section"> 
+      <ul class="left">
+        <li class="divider"></li> 
+        <li class="active"><a href="{{ path('evenement.show') }}">stock</a></li>
+        <li class="divider"></li> 
+        <li class="has-dropdown"><a href="#">Evenement</a>
+        <ul class="dropdown">
+          <li><a href="{{ path('evenement.add') }}"> ajouter une voiture </a></li>
+          <li><a href="{{ path('evenement.show') }}">afficher/editer/supprimer des evenements</a></li>
+        </ul> 
+        </li> 
+      </ul> 
+      <ul class="right"> 
+        <li><a href="#">se deconnecter</a></li> 
+      </ul> 
+    </section> 
+</nav>

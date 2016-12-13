@@ -1,0 +1,52 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %};
+
+	<form method="post" action="{{ path('evenement.validFormEdit') }}">
+		<div class="row">
+
+			<fieldset>
+				<legend>Modifier un evenement </legend>
+				<input name="id_evenement"  type="hidden" value="{{evenement.id_evenement}}"/>
+				{#<label>Type :#}
+					{#<select name="id_categorie">#}
+						{#{% if  evenement.id_categorie is not defined or evenement.id_categorie is empty   %}#}
+							{#<option value="">Veuillez sélectionner une evenement</option>#}
+						{#{% endif %}#}
+						{#{% for typeevenement in typeevenements %}#}
+							{#<option value="{{ typeevenement.id_categorie }}"#}
+									{#{% if evenement.id_categorie is defined and typeevenement.id_categorie == evenement.id_categorie %}selected{% endif %}>#}
+								{#{{ typeevenement.libelle }}#}
+							{#</option>#}
+						{#{% endfor %}#}
+					{#</select>#}
+					{#{% if erreurs.id_categorie is defined %}#}
+						{#<small class="error">{{erreurs.id_categorie}}</small>#}
+					{#{% endif %}#}
+				{#</label>#}
+
+				<label>lieu de l'evenement
+					<input name="lieu_evenement"  type="text"  size="18"  value="{{evenement.lieu_evenement|default("")}}"/>
+					{% if erreurs.lieu_evenement is defined %}
+						<small class="error">{{erreurs.lieu_evenement}}</small>
+					{% endif %}
+				</label>
+				<label>description
+					<input name="description"  type="text"  size="18" value="{{evenement.description|default("")}}"/>
+					{% if erreurs.description is defined %}
+						<small class="error">{{erreurs.description}}</small>
+					{% endif %}
+				</label>
+				<label>Date lancement
+					<input name="date_evenement"  type="text"  size="18" value="{{evenement.date_evenement|default("")}}"/>
+					{% if erreurs.date_evenement is defined %}
+						<small class="error">{{erreurs.date_evenement}}</small>
+					{% endif %}
+				</label>
+
+				<input type="submit" name="Modifierevenement" value="Modifier" />
+
+			</fieldset>
+		</div>
+	</form>
+
+{% endblock %}

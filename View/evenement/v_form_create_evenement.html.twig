@@ -1,0 +1,53 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %}
+    <form method="post" action="{{ path("evenement.validFormAdd") }} ">
+        <div class="row">
+            <fieldset>
+                <legend>Creer un evenement (twig)</legend>
+                {#<label>Nom :#}
+                    {#<input name="nom"  type="text"  size="18" value="{{donnees.nom|default("")}}" />#}
+                    {#{% if erreurs.nom is defined %}#}
+                        {#<small class="error">{{erreurs.nom}}</small>#}
+                    {#{% endif %}#}
+                {#</label>#}
+
+                {#<label>Type :#}
+                    {#<select name="id_categorie">#}
+                        {#{% if  donnees.id_categorie is not defined or donnees.id_categorie is empty   %}#}
+                            {#<option value="">Veuillez sélectionner la categorie de la voiture</option>#}
+                        {#{% endif %}#}
+                        {#{% for typeVoitures in typeVoitures %}#}
+                            {#<option value="{{ typeVoitures.id_categorie }}"#}
+                                    {#{% if donnees.id_categorie is defined and typeVoitures.id_categorie == donnees.id_categorie %}selected{% endif %}>#}
+                                {#{{ typeVoitures.libelle }}#}
+                            {#</option>#}
+                        {#{% endfor %}#}
+                    {#</select>#}
+                    {#{% if erreurs.id_categorie is defined %}#}
+                        {#<small class="error">{{erreurs.id_categorie}}</small>#}
+                    {#{% endif %}#}
+                {#</label>#}
+
+                <label>lieu_evenement
+                    <input name="lieu_evenement"  type="text"  size="18"  value="{{donnees.lieu_evenement|default("")}}"/>
+                    {% if erreurs.lieu_evenement is defined %}
+                        <small class="error">{{erreurs.lieu_evenement}}</small>
+                    {% endif %}
+                </label>
+                <label>description
+                    <input name="description"  type="text"  size="18" value="{{donnees.description|default("")}}"/>
+                    {% if erreurs.description is defined %}
+                        <small class="error">{{erreurs.description}}</small>
+                    {% endif %}
+                </label>
+                <label>Date de l'evenement
+                    <input name="date_evenement"  type="text"  size="18"  value="{{donnees.date_evenement|default("")}}"/>
+                    {% if erreurs.date_evenement is defined %}
+                        <small class="error">{{erreurs.date_evenement}}</small>
+                    {% endif %}
+                </label>
+                <input type="submit" name="creerEvenement" value="créer" />
+            </fieldset>
+        </div>
+    </form>
+{% endblock %}

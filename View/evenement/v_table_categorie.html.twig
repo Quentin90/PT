@@ -1,0 +1,24 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %};
+    <div class="row">
+        <a href="{{ path('evenement.add') }}"> Ajouter une voiture </a>
+        <table>
+            <caption>Recapitulatifs des voitures</caption>
+            <thead>
+            <tr><th>id</th><th>libelle</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for categorie in data if data is not empty %}
+                <tr>
+                    <td>{{categorie.id}}</td><td>{{categorie.libelle}}</td>
+                </tr>
+            {% endfor %}
+
+            <tbody>
+        </table>
+    </div>
+
+{% endblock %}
+

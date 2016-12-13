@@ -1,0 +1,26 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %}
+
+    première vue avec twig avec un appel de silex
+
+
+
+    première vue avec twig<br>
+
+    <a href="{{ url('toto') }}"> utilisation de url : url('toto') => {{ url('toto') }} </a><br>
+
+    <a href="{{ path('toto') }}"> utilisation de path : path('toto')  => {{ path('toto') }}</a>
+
+
+
+
+
+
+    <br><br>
+    un petit formulaire dans la vue
+    <form action="{{ url('validForm') }}" method="post">
+        <input type="text" name="test" value="test" />
+        <input type="hidden" id="_method" name="_method" value="PUT" />
+    </form>
+    <br><br> retour du formulaire :    {{ data | default('pas de data') }}
+{% endblock %}

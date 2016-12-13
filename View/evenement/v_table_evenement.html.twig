@@ -1,0 +1,32 @@
+{% extends "v_layout.html.twig" %}
+{% block contenu %};
+	<div class="row">
+		<a href="{{ path('evenement.add') }}"> Ajouter une evenement </a>
+		<table>
+			<caption>Recapitulatifs des evenements</caption>
+			<thead>
+			<tr><th>id</th><th>date</th><th>lieu</th><th>description</th>
+
+				<th>opération</th>
+
+			</tr>
+			</thead>
+			<tbody>
+
+			{% for evenement in data if data is not empty %}
+				<tr>
+					<td>{{evenement.id_evenement}}</td><td>{{evenement.date_evenement}}</td><td>{{ evenement.lieu_evenement }}</td><td>{{evenement.description_evenement}} </td><td>
+					</td>
+					<td>
+						<a href="{{ path('evenement.edit', {id: evenement.id_evenement}) }}">modifier</a>
+						<a href="{{ path('evenement.delete', {id: evenement.id_evenement}) }}">supprimer</a>
+					</td>
+				</tr>
+			{% endfor %}
+
+			<tbody>
+		</table>
+	</div>
+
+{% endblock %}
+
