@@ -22,6 +22,8 @@ CREATE TABLE User(
         PRIMARY KEY (id_user )
 )ENGINE=InnoDB;
 
+INSERT INTO User VALUES(NULL,'Hugo','Vicaire','199999999','vicairehugo@gmail.com','aaa','25/06/1996','STMG',NULL,1,1);
+
 #------------------------------------------------------------
 # Table: Type_user   
 #------------------------------------------------------------
@@ -32,6 +34,7 @@ CREATE TABLE Type_user(
         PRIMARY KEY (id_type_user)
 )ENGINE=InnoDB;
 
+INSERT INTO Type_user VALUES(NULL,'Admin');
 
 #------------------------------------------------------------
 # Table: Etablissement
@@ -44,6 +47,7 @@ CREATE TABLE Etablissement(
         PRIMARY KEY (id_etablissement )
 )ENGINE=InnoDB;
 
+INSERT INTO Etablissement VALUES(NULL,'IUT Belfort Montbéliard','Belfort');
 
 #------------------------------------------------------------
 # Table: Matiere
@@ -55,6 +59,7 @@ CREATE TABLE Matiere(
         PRIMARY KEY (id_matiere )
 )ENGINE=InnoDB;
 
+INSERT INTO Matiere VALUES(NULL,'Anglais');
 
 #------------------------------------------------------------
 # Table: Cours
@@ -69,6 +74,7 @@ CREATE TABLE Cours(
         PRIMARY KEY (id_cours )
 )ENGINE=InnoDB;
 
+INSERT INTO Cours VALUES(NULL,'Anglais Future of machin','Présentation Future of machin',NULL,1);
 
 #------------------------------------------------------------
 # Table: Evenement
@@ -82,6 +88,7 @@ CREATE TABLE Evenement(
         PRIMARY KEY (id_evenement )
 )ENGINE=InnoDB;
 
+INSERT INTO Evenement VALUES(NULL,25/12/2017,'Belfort','Noël');
 
 #------------------------------------------------------------
 # Table: Objet
@@ -96,6 +103,9 @@ CREATE TABLE Objet(
         PRIMARY KEY (id_objet ,id_user )
 )ENGINE=InnoDB;
 
+INSERT INTO Objet VALUES(NULL,'Micro-Ondes','Micro-ondes de qualités, 
+rechauffe toutes sortes de plât, Meilleur amis de l Etudiant, 
+même s il ne permet pas forcement de faire cuire des pâtes','Belfort',69.69,1);
 
 #------------------------------------------------------------
 # Table: Covoiturage
@@ -111,6 +121,7 @@ CREATE TABLE Covoiturage(
         PRIMARY KEY (id_covoiturage )
 )ENGINE=InnoDB;
 
+INSERT INTO Covoiturage VALUES(NULL,'Belfort','Besançon',13.42,23/12/2017,1);
 
 #------------------------------------------------------------
 # Table: Collocation
@@ -125,6 +136,9 @@ CREATE TABLE Collocation(
         PRIMARY KEY (id_collocation )
 )ENGINE=InnoDB;
 
+INSERT INTO Collocation VALUES(NULL,'Bonjour, DUT Info cherche collocation avec 
+un Femme dans l espoir de parler a la gente feminie pour la primière fois de mon existance, 
+je connais l intégralité des StarWars et LOTR par coeur, so plz contain your orgasms ladies',666.69,'Belfort',3);
 
 #------------------------------------------------------------
 # Table: Sexe
@@ -136,6 +150,9 @@ CREATE TABLE Sexe(
         PRIMARY KEY (id_sexe )
 )ENGINE=InnoDB;
 
+INSERT INTO Sexe VALUES(NULL,'Homme');
+INSERT INTO Sexe VALUES(NULL,'Femme');
+INSERT INTO Sexe VALUES(NULL,'Autre');
 
 #------------------------------------------------------------
 # Table: Emploi
@@ -151,6 +168,7 @@ CREATE TABLE Emploi(
         PRIMARY KEY (id_emploi )
 )ENGINE=InnoDB;
 
+INSERT INTO Emploi VALUES(NULL,'PDG','13/12/2016',NULL,'Devenez le PDG de Google, c est un bon plan, j vous jure  !','CDI');
 
 #------------------------------------------------------------
 # Table: propose
@@ -162,17 +180,19 @@ CREATE TABLE Propose(
         PRIMARY KEY (id_user ,id_emploi )
 )ENGINE=InnoDB;
 
+INSERT INTO Propose VALUES(5,1);
 
 #------------------------------------------------------------
 # Table: participe
 #------------------------------------------------------------
 
 CREATE TABLE Participe(
-        id_evenement Int NOT NULL ,
         id_user      Int NOT NULL ,
+        id_evenement Int NOT NULL ,        
         PRIMARY KEY (id_evenement ,id_user )
 )ENGINE=InnoDB;
 
+INSERT INTO Participe VALUES(1,1);
 
 #------------------------------------------------------------
 # Table: enseigne
@@ -183,6 +203,8 @@ CREATE TABLE Enseigne(
         id_matiere Int NOT NULL ,
         PRIMARY KEY (id_user ,id_matiere )
 )ENGINE=InnoDB;
+
+INSERT INTO Enseigne VALUES(6,4);
 
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Etablissement FOREIGN KEY (id_etablissement) REFERENCES Etablissement(id_etablissement);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_sexe FOREIGN KEY (id_sexe) REFERENCES Sexe(id_sexe);
