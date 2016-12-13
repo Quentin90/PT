@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;   // pour utiliser request
 
 class UserController implements ControllerProviderInterface {
 
-	private $userModel;
+	private $UserModel;
 
 	public function index(Application $app) {
 		return $this->connexionUser($app);
@@ -28,8 +28,8 @@ class UserController implements ControllerProviderInterface {
 		$donnees['login']=$req->get('login');
 		$donnees['password']=$req->get('password');
 
-		$this->userModel = new UserModel($app);
-		$data=$this->userModel->verif_login_mdp_Utilisateur($donnees['login'],$donnees['password']);
+		$this->UserModel = new UserModel($app);
+		$data=$this->UserModel->verif_login_mdp_Utilisateur($donnees['login'],$donnees['password']);
 
 		if($data != NULL)
 		{
@@ -47,15 +47,15 @@ class UserController implements ControllerProviderInterface {
 	}
 
     public function showUser(Application $app){
-        $this->userModel=new UserModel($app);
-        $donnees=$this->userModel->showUser();
+        $this->UserModel=new UserModel($app);
+        $donnees=$this->UserModel->showUser();
 
         return $app["twig"]->render('backOff/User/show.html.twig',['donnees'=>$donnees]);
 
     }
 
 	public function addUser(Application $app){
-	    $this->userModel=new UserModel($app);
+	    $this->UserModel=new UserModel($app);
         return $app["twig"]->render('backOff/User/add.html.twig');
 
     }
@@ -77,13 +77,13 @@ class UserController implements ControllerProviderInterface {
 
             if(! empty($erreurs))
             {
-                $this->userModel = new UserModel($app);
+                $this->UserModel = new UserModel($app);
                 return $app["twig"]->render('backOff/User/add.html.twig',['donnees'=>$donnees,'erreurs'=>$erreurs]);
             }
             else
             {
-                $this->userModel = new UserModel($app);
-                $this->userModel->addUser($donnees);
+                $this->UserModel = new UserModel($app);
+                $this->UserModel->addUser($donnees);
                 var_dump($donnees);
                 return $app->redirect($app["url_generator"]->generate("user.showUser"));
             }
