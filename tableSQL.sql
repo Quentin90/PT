@@ -9,11 +9,12 @@
 
 CREATE TABLE User(
         id_user          int (11) Auto_increment  NOT NULL ,
+        login         Varchar (25) ,
         nom_user         Varchar (25) ,
         prenom_user      Varchar (25) ,
         N_INE            Varchar (25) ,
         e_mail           Varchar (25) ,
-        mot_de_passe     Varchar (25) ,
+        password     Varchar (25) ,
         date_naissance   Date ,
         filiere          Varchar (25) ,
         id_type_user     Int ,
@@ -43,7 +44,7 @@ INSERT INTO Type_user VALUES(NULL,'Admin');
 CREATE TABLE Etablissement(
         id_etablissement   int (11) Auto_increment  NOT NULL ,
         nom_etablissement  Varchar (25) ,
-        lieu_etablissement Varchar (25) ,
+        lieu_etablissement text ,
         PRIMARY KEY (id_etablissement )
 )ENGINE=InnoDB;
 
@@ -68,7 +69,7 @@ INSERT INTO Matiere VALUES(NULL,'Anglais');
 CREATE TABLE Cours(
         id_cours          int (11) Auto_increment  NOT NULL ,
         nom_cours         Varchar (25) ,
-        description_cours Varchar (500) ,
+        description_cours text ,
         id_user           Int ,
         id_matiere        Int ,
         PRIMARY KEY (id_cours )
@@ -84,7 +85,7 @@ CREATE TABLE Evenement(
         id_evenement          int (11) Auto_increment  NOT NULL ,
         date_evenement        Date ,
         lieu_evenement        Varchar (25) ,
-        description_evenement Varchar (25) ,
+        description_evenement text ,
         PRIMARY KEY (id_evenement )
 )ENGINE=InnoDB;
 
@@ -96,7 +97,7 @@ INSERT INTO Evenement VALUES(NULL,25/12/2017,'Belfort','Noël');
 
 CREATE TABLE Objet(
         id_objet          int (11) Auto_increment  NOT NULL ,
-        description_objet Varchar (25) ,
+        description_objet text,
         lieu_objet        Varchar (25) ,
         prix_objet        Double ,
         id_user           Int NOT NULL ,
@@ -129,7 +130,7 @@ INSERT INTO Covoiturage VALUES(NULL,'Belfort','Besançon',13.42,23/12/2017,1);
 
 CREATE TABLE Collocation(
         id_collocation          int (11) Auto_increment  NOT NULL ,
-        description_collocation Varchar (25) ,
+        description_collocation text ,
         prix_collocation        Double ,
         lieu_collocation        Varchar (25) ,
         id_user                 Int ,
@@ -163,7 +164,7 @@ CREATE TABLE Emploi(
         poste_emploi       Varchar (25) ,
         date_debut_emploi  Date ,
         date_fin_emploi    Date ,
-        description_emploi Varchar (25) ,
+        description_emploi text,
         type_emploi        Varchar (25) ,
         PRIMARY KEY (id_emploi )
 )ENGINE=InnoDB;
