@@ -7,6 +7,23 @@
 # Table: User
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS Collocations;
+DROP TABLE IF EXISTS Cours;
+DROP TABLE IF EXISTS Covoiturage;
+DROP TABLE IF EXISTS Propose;
+DROP TABLE IF EXISTS Participe;
+DROP TABLE IF EXISTS Objet;
+DROP TABLE IF EXISTS Matiere;
+DROP TABLE IF EXISTS Evenement;
+DROP TABLE IF EXISTS Enseigne;
+DROP TABLE IF EXISTS Emploi;
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Type_user;
+DROP TABLE IF EXISTS Sexe;
+DROP TABLE IF EXISTS Etablissement;
+
+
+
 CREATE TABLE User(
         id_user          int (11) Auto_increment  NOT NULL ,
         login         Varchar (25) ,
@@ -23,7 +40,7 @@ CREATE TABLE User(
         PRIMARY KEY (id_user )
 )ENGINE=InnoDB;
 
-INSERT INTO User VALUES(NULL,'Hugo','Hugo','Vicaire','199999999','vicairehugo@gmail.com','aaa','25/06/1996','STMG',NULL,1,1);
+INSERT INTO User VALUES(NULL,'Hugo','Hugo','Vicaire','199999999','vicairehugo@gmail.com','aaa','1996-06-25','STMG',NULL,1,1);
 
 #------------------------------------------------------------
 # Table: Type_user   
@@ -89,7 +106,7 @@ CREATE TABLE Evenement(
         PRIMARY KEY (id_evenement )
 )ENGINE=InnoDB;
 
-INSERT INTO Evenement VALUES(NULL,25/12/2017,'Belfort','Noël');
+INSERT INTO Evenement VALUES(NULL,'2017-05-12','Belfort','Noël');
 
 #------------------------------------------------------------
 # Table: Objet
@@ -97,6 +114,7 @@ INSERT INTO Evenement VALUES(NULL,25/12/2017,'Belfort','Noël');
 
 CREATE TABLE Objet(
         id_objet          int (11) Auto_increment  NOT NULL ,
+    	nom_objet Varchar(25),
         description_objet text,
         lieu_objet        Varchar (25) ,
         prix_objet        Double ,
@@ -122,7 +140,7 @@ CREATE TABLE Covoiturage(
         PRIMARY KEY (id_covoiturage )
 )ENGINE=InnoDB;
 
-INSERT INTO Covoiturage VALUES(NULL,'Belfort','Besançon',13.42,23/12/2017,1);
+INSERT INTO Covoiturage VALUES(NULL,'Belfort','Besançon',13.42,'2017-06-06',1);
 
 #------------------------------------------------------------
 # Table: Collocation
@@ -139,7 +157,7 @@ CREATE TABLE Collocation(
 
 INSERT INTO Collocation VALUES(NULL,'Bonjour, DUT Info cherche collocation avec 
 un Femme dans l espoir de parler a la gente feminie pour la primière fois de mon existance, 
-je connais l intégralité des StarWars et LOTR par coeur, so plz contain your orgasms ladies',666.69,'Belfort',3);
+je connais l intégralité des StarWars et LOTR par coeur, so plz contain your orgasms ladies',666.69,'Belfort',1);
 
 #------------------------------------------------------------
 # Table: Sexe
@@ -147,7 +165,7 @@ je connais l intégralité des StarWars et LOTR par coeur, so plz contain your o
 
 CREATE TABLE Sexe(
         id_sexe      int (11) Auto_increment  NOT NULL ,
-        libelle_sexe Int ,
+        libelle_sexe varchar(25) ,
         PRIMARY KEY (id_sexe )
 )ENGINE=InnoDB;
 
@@ -169,7 +187,7 @@ CREATE TABLE Emploi(
         PRIMARY KEY (id_emploi )
 )ENGINE=InnoDB;
 
-INSERT INTO Emploi VALUES(NULL,'PDG','13/12/2016',NULL,'Devenez le PDG de Google, c est un bon plan, j vous jure  !','CDI');
+INSERT INTO Emploi VALUES(NULL,'PDG','2016-09-09',NULL,'Devenez le PDG de Google, c est un bon plan, j vous jure  !','CDI');
 
 #------------------------------------------------------------
 # Table: propose
@@ -181,7 +199,7 @@ CREATE TABLE Propose(
         PRIMARY KEY (id_user ,id_emploi )
 )ENGINE=InnoDB;
 
-INSERT INTO Propose VALUES(5,1);
+INSERT INTO Propose VALUES(1,1);
 
 #------------------------------------------------------------
 # Table: participe
@@ -205,7 +223,7 @@ CREATE TABLE Enseigne(
         PRIMARY KEY (id_user ,id_matiere )
 )ENGINE=InnoDB;
 
-INSERT INTO Enseigne VALUES(6,4);
+INSERT INTO Enseigne VALUES(1,1);
 
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Etablissement FOREIGN KEY (id_etablissement) REFERENCES Etablissement(id_etablissement);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_sexe FOREIGN KEY (id_sexe) REFERENCES Sexe(id_sexe);
@@ -221,5 +239,4 @@ ALTER TABLE Participe ADD CONSTRAINT FK_Participe_id_evenement FOREIGN KEY (id_e
 ALTER TABLE Participe ADD CONSTRAINT FK_Participe_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
 ALTER TABLE Enseigne ADD CONSTRAINT FK_Enseigne_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
 ALTER TABLE Enseigne ADD CONSTRAINT FK_Enseigne_id_matiere FOREIGN KEY (id_matiere) REFERENCES Matiere(id_matiere);
-
 
