@@ -7,15 +7,15 @@
 # Table: User
 #------------------------------------------------------------
 
-DROP TABLE IF EXISTS Collocations;
+DROP TABLE IF EXISTS Collocation;
 DROP TABLE IF EXISTS Cours;
 DROP TABLE IF EXISTS Covoiturage;
 DROP TABLE IF EXISTS Propose;
 DROP TABLE IF EXISTS Participe;
 DROP TABLE IF EXISTS Objet;
+DROP TABLE IF EXISTS Enseigne;
 DROP TABLE IF EXISTS Matiere;
 DROP TABLE IF EXISTS Evenement;
-DROP TABLE IF EXISTS Enseigne;
 DROP TABLE IF EXISTS Emploi;
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Type_user;
@@ -40,7 +40,7 @@ CREATE TABLE User(
         PRIMARY KEY (id_user )
 )ENGINE=InnoDB;
 
-INSERT INTO User VALUES(NULL,'Hugo','Hugo','Vicaire','199999999','vicairehugo@gmail.com','aaa','1996-06-25','STMG',NULL,1,1);
+INSERT INTO User VALUES(NULL,'Hugo','Hugo','Vicaire','199999999','vicairehugo@gmail.com','aaa','1996-06-25','STMG',1,1,1);
 
 #------------------------------------------------------------
 # Table: Type_user   
